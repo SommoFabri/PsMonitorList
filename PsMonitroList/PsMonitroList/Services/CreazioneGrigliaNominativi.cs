@@ -13,6 +13,7 @@ namespace PsMonitroList.Services
         public async static  void GrigliaNominativi(Grid grigliaNominativi)
         {
             List<RecordBean> lista = new List<RecordBean>();
+            List<string> cognomi = new List<string>();
             int row = 0;
             int colonna = 0;
             string cognome="";
@@ -21,31 +22,45 @@ namespace PsMonitroList.Services
 
             foreach (var i in lista )
             {
-               cognome = i.cognome;
-               // row++;
+                cognomi.Add(i.cognome);
+               
             }
             colonna = 0;
 
+           for(int j=0;j<5;j++)
+            {
+                grigliaNominativi.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+              
+            }
            
-            grigliaNominativi.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
             grigliaNominativi.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            for(int j=0;j<5;j++)
+            {
+            
+                    var image = new Image
+                    {
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        Source = immagine
+                    };
 
-            var image = new Image
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center,
-                Source = immagine
-            };
-            var labelCognome = new Label
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center,
-                Text = cognome,
-                TextColor= Color.Black
-            };
-            grigliaNominativi.Children.Add(image,row,colonna);
-            grigliaNominativi.Children.Add(labelCognome,row,colonna);
-         
+                    var labelCognome = new Label
+                    {
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        Text = cognomi[j],
+                        TextColor = Color.Black
+                    };
+                row++;
+
+                    grigliaNominativi.Children.Add(image, colonna, row);
+                    grigliaNominativi.Children.Add(labelCognome, colonna, row);
+                
+            }
+            
+            
+       
+
         }
         public async static Task<List<RecordBean>> RisultatoConnessione()
         {
