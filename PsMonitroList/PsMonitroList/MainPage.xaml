@@ -2,10 +2,33 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PsMonitroList"
-             x:Class="PsMonitroList.MainPage">
+             x:Class="PsMonitroList.MainPage"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout Orientation="Horizontal">
+            <Image Source="logostruttura.jpg" HeightRequest="50"/>
+            <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand" Margin="0,20,40,0">
+                <Label Text="{Binding DateTime, StringFormat='{0:MMMM d, yyyy HH:mm:ss }'}"
+                        FontSize="Large">
+                    <Label.BindingContext>
+                        <local:ClockViewModel />
+                    </Label.BindingContext>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"  BackgroundColor="#13a0ec" Padding="5,5,5,5">
+            <Label VerticalOptions="Center" HorizontalOptions="Start" Text="Pazienti in Pronto Soccorso" FontSize="Large" />
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
 
+            <StackLayout BackgroundColor="Blue" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="ciao"></Label>
+            </StackLayout>
+
+        </StackLayout>
+        <StackLayout>
+            <Label Text="ciao"></Label>
+            <Grid x:Name="GrigliaNominativi" BackgroundColor="Blue" HorizontalOptions="Center" VerticalOptions="Center"></Grid>
+        </StackLayout>
+        
+    </StackLayout>
 </ContentPage>
