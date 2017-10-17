@@ -10,7 +10,7 @@ namespace PsMonitroList.Services
 {
   public class CreazioneGrigliaNominativi
     {
-        public async static  Task<Grid> GrigliaNominativi()
+        public async static  void GrigliaNominativi(Grid grigliaNominativi)
         {
             List<RecordBean> lista = new List<RecordBean>();
             int row = 0;
@@ -22,15 +22,11 @@ namespace PsMonitroList.Services
             foreach (var i in lista )
             {
                cognome = i.cognome;
-               /* row++;*/
+               // row++;
             }
             colonna = 0;
 
-            var grigliaNominativi = new Grid
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center
-            };
+           
             grigliaNominativi.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
             grigliaNominativi.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
@@ -50,7 +46,6 @@ namespace PsMonitroList.Services
             grigliaNominativi.Children.Add(image,row,colonna);
             grigliaNominativi.Children.Add(labelCognome,row,colonna);
          
-            return grigliaNominativi;
         }
         public async static Task<List<RecordBean>> RisultatoConnessione()
         {

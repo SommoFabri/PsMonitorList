@@ -26,8 +26,7 @@
 
         </StackLayout>
         <StackLayout>
-            <Label Text="ciao"></Label>
-            <Grid x:Name="GrigliaNominativi" BackgroundColor="Blue" HorizontalOptions="Center" VerticalOptions="Center"></Grid>
+            <Grid x:Name="GrigliaNominativi" BackgroundColor="Blue"></Grid>
         </StackLayout>
         
     </StackLayout>

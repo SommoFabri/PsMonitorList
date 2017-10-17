@@ -20,18 +20,9 @@ namespace PsMonitroList
 
 
         }
-        public async static Task<List<RecordBean>> RisultatoConnessione()
-        {
-
-            Connessioni<RecordBean> connessioni = new Connessioni<RecordBean>();
-
-            var listaUno = await connessioni.GetJson(URLcs.URLConnessione);
-            return listaUno;
-
-        }
         public async void riempimento()
         {
-            GrigliaNominativi = await CreazioneGrigliaNominativi.GrigliaNominativi();
+             CreazioneGrigliaNominativi.GrigliaNominativi(GrigliaNominativi);
 
         }
      
